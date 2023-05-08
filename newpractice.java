@@ -15,20 +15,25 @@ public class newpractice
 				}
 			}
 		}
-		
-		for(int i =0; i < freq.length; i++){
-			if(arr[i]!=' ' && arr[i]!='0'){
-				int max = freq[0];
-				if(max <= freq[i] ){
-					System.out.println(arr[i]+": "+freq[i]);
-					max = freq[i];
-				}
-				else if(max > freq[i]){
-					System.out.println(arr[i]+": "+freq[i]);
-					max = freq[i];
-				}
-			}
-		}
+		//sorting the characters with there frequency count 
+		for (int i = 0; i < freq.length - 1; i++) {
+            for (int j = i + 1; j < freq.length; j++) {
+                if (freq[i] < freq[j]) {
+                    int tempFreq = freq[i];     //shorting the frequency 
+                    freq[i] = freq[j];
+                    freq[j] = tempFreq;
+                    char tempChar = arr[i];     // shorting the character
+                    arr[i] = arr[j];
+                    arr[j] = tempChar;
+                }
+            }
+        }
+        
+        // print characters and their frequency counts
+        for (int i = 0; i < freq.length; i++) {
+            if (arr[i] != ' ' && arr[i] != '0') {
+                System.out.println(arr[i] + ": " + freq[i]);
+            }
+        }
 	}
 }
-
